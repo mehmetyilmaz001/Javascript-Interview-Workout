@@ -53,6 +53,18 @@ class LinkedList {
 
     return this;
   }
+
+  printList() {
+    const arr = [];
+    let current = this.head;
+
+    while (current) {
+      arr.push(current.value);
+      current = current.next;
+    }
+
+    return arr;
+  }
 }
 
 const linkedList = new LinkedList(10);
@@ -61,7 +73,6 @@ linkedList.append(5);
 linkedList.append(16);
 linkedList.append(1);
 
-console.log(linkedList);
 linkedList.prepend(99);
 
-console.log(linkedList);
+console.log(linkedList.printList());

@@ -60,6 +60,11 @@ class LinkedList {
       return this.printList();
     }
 
+    if (index === 0) {
+      this.prepend(value);
+      return this.printList();
+    }
+
     const newNode = {
       value,
       next: null,
@@ -72,6 +77,25 @@ class LinkedList {
     foundNodeForOp.next = newNode;
 
     this.length++;
+
+    return this.printList();
+  }
+
+  remove(index) {
+    
+    if(index > (this.length - 1)) return;
+
+    if (index === 0) {
+      this.head = this.head.next;
+      return this.printList();
+    }
+
+    const foundNodeToMakeCorelation = this.findNodeAtIndex(index-1);
+    const nodeTobeDeleted = foundNodeToMakeCorelation.next; 
+
+    foundNodeToMakeCorelation.next = nodeTobeDeleted.next;
+
+    this.length--;
 
     return this.printList();
   }
@@ -108,3 +132,4 @@ linkedList.append(16);
 linkedList.append(1);
 linkedList.append(99);
 linkedList.insert(2, 11);
+linkedList.remove(2);

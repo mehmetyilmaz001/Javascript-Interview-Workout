@@ -100,6 +100,34 @@ class LinkedList {
     return this.printList();
   }
 
+  reverse(){
+    if(!this.head.next){
+      return this.head;
+    }
+
+    let first = this.head;
+    let second = first.next;
+
+    this.tail = this.head;
+
+    while(second){
+      const temp = second.next;
+      second.next = first;
+      first = second;
+      second = temp;
+
+      console.log("first:", first);
+      console.log("second:", second);
+      console.log("temp:", temp);
+      console.log(this.printList());
+    }
+
+    this.head.next = null;
+    this.head = first;
+
+    return this;
+  }
+
   findNodeAtIndex(index) {
     let counter = 0;
     let current = this.head;
@@ -132,4 +160,4 @@ linkedList.append(16);
 linkedList.append(1);
 linkedList.append(99);
 linkedList.insert(2, 11);
-linkedList.remove(2);
+linkedList.reverse();
